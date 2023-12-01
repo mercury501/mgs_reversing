@@ -1255,7 +1255,22 @@ int s07a_meryl_unk_800DCED0(SVECTOR* svec, SVECTOR* svec2, int a1) {
     return 1;
 }
 
-#pragma INCLUDE_ASM("asm/overlays/s07a/s07a_meryl_unk_800DCF24.s")
+int s07a_meryl_unk_800DCF24(WatcherWork *work) {
+    
+    int temp_v0;
+
+    temp_v0 = NextAsiato_800D12D0(work->control.field_2C_map->field_8_hzd, work->field_BA0, &work->control.field_0_mov);
+
+    if (temp_v0 >= 0) {
+        
+        work->field_BA0 = temp_v0;
+        return 1;
+    }
+    
+    work->field_BA0 = -1;
+    return 0;
+}
+
 #pragma INCLUDE_ASM("asm/overlays/s07a/s07a_meryl_unk_800DCF78.s")
 #pragma INCLUDE_ASM("asm/overlays/s07a/s07a_meryl_unk_800DCFD4.s")
 #pragma INCLUDE_ASM("asm/overlays/s07a/s07a_meryl_unk_800DD05C.s")
