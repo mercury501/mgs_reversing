@@ -691,8 +691,6 @@ void s07a_meryl_unk_800DC0DC( WatcherWork* work )
     }
 }
 
-extern int s07a_meryl_unk_800DCF78( WatcherWork* work ) ;
-
 void s07a_meryl_unk_800DC18C( WatcherWork* work ) 
 {
     if ( ( work->think3 == 39 ) && ( s07a_meryl_unk_800DC00C( work ) ) )
@@ -1271,7 +1269,23 @@ int s07a_meryl_unk_800DCF24(WatcherWork *work) {
     return 0;
 }
 
-#pragma INCLUDE_ASM("asm/overlays/s07a/s07a_meryl_unk_800DCF78.s")
+extern const char s07a_aRootchange_800E3090[];
+
+int s07a_meryl_unk_800DCF78(WatcherWork *work) {
+    
+    if (work->field_B7E != work->field_B7D) {
+        
+        fprintf(1, s07a_aRootchange_800E3090);
+        work->field_B7D = work->field_B7E;
+        
+        s07a_meryl_unk_800DC7CC(work);
+        
+        return 1;
+    }
+
+    return 0;
+}
+
 #pragma INCLUDE_ASM("asm/overlays/s07a/s07a_meryl_unk_800DCFD4.s")
 #pragma INCLUDE_ASM("asm/overlays/s07a/s07a_meryl_unk_800DD05C.s")
 // Identical to s00a_command_800CB6CC
